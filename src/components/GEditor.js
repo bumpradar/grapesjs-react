@@ -6,10 +6,10 @@ import GrapesJS from 'grapesjs';
 import gjsPresetWebpage from 'grapesjs-preset-webpage';
 import gjsPresetNewsletter from 'grapesjs-preset-newsletter';
 import gjsBasicBlocks from 'grapesjs-blocks-basic';
-// Components
+
 import GComponent from './GComponent';
+import type {GrapesPluginType} from '../types/grapes';
 import GBlock from './GBlock';
-import type { GrapesPluginType } from 'types/grapes';
 
 const {
   useEffect,
@@ -112,7 +112,7 @@ function GEditor(props: PropsType) {
   );
 
   return (
-    <div id={id}/>
+    <div id={id} ref={props.innerRef}/>
   );
 }
 
@@ -121,11 +121,9 @@ GEditor.defaultProps = {
   newsletter: false,
   plugins: [],
   components: [],
-  blocks: [],
   storageManager: {},
   blockManager: {},
 };
-
-export default GEditor;
+export default React.forwardRef((props, ref) => <GEditor innerRef={ref} {...props}/>);
 
 window.grapesjs = window.GrapesJS = GrapesJS;
