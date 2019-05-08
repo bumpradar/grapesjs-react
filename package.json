@@ -86,6 +86,7 @@
     "eject": "react-scripts eject",
     "peers": "npm-install-peers",
     "lint": "eslint --fix src/",
-    "storybook": "start-storybook"
+    "storybook": "start-storybook",
+    "prepare": "npm run build"
   }
 }
